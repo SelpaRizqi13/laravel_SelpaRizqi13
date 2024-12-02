@@ -21,7 +21,7 @@ Route::middleware(['guest'])->group(function () {
     
     Route::resource('login', LoginController::class);
 });
-
+Route::middleware(['auth'])->group(function () {
 Route::resource('profilrumahsakit', ProfilrumahsakitController::class);
 Route::get('/filter-rumah-sakit', [ProfilRumahSakitController::class, 'filterRumahSakit']);
 
@@ -35,4 +35,4 @@ Route::delete('/delete_pasien/{id}', [PasienController::class, 'destroy'])->name
 
 //logout
 Route::post('/logout', [LoginController::class, 'logout']);
-
+});
